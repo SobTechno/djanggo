@@ -1,0 +1,12 @@
+{% for p in lastestPost %}
+<div class="single-post-list d-flex flex-row align-items-center">
+    <div class="thumb">
+        <img class="img-fluid" src="{{p.image.url}}" alt="">
+    </div>
+    <div class="details">
+        <a href="{% url 'blog:blog_single' name=p.slug %}">
+            <h6>{{ p.title }}</h6>
+        </a>
+    </div>
+</div>
+{% endfor %}
