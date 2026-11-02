@@ -1,5 +1,5 @@
 from django.contrib.sitemaps.views import sitemap
-from django.urls import path
+from django.urls import path,include
 from .sitemaps import StaticViewSitemap
 from blog.sitemaps import BlogSitemap
 from .views import *
@@ -19,4 +19,5 @@ urlpatterns = [
         {"sitemaps": sitemaps},
         name="django.contrib.sitemaps.views.sitemap",
     ),
+    path('robots.txt', include('robots.urls')),
 ]
