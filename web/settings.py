@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'app.apps.AppConfig',
     'robots',
+    'taggit',
+    'captcha',
+    'django_summernote',
     'blog.apps.BlogConfig',
 ]
 SITE_ID = 1
@@ -142,3 +145,4 @@ INTERNAL_IPS = [
     "127.0.0.1",
     # ...
 ]
+

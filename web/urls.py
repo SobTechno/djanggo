@@ -24,6 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('app.urls')),
     path('blog',include('blog.urls')),
+    path('summernote/', include('django_summernote.urls')),
+    path('captcha/', include('captcha.urls')),
 ]+ debug_toolbar_urls()
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

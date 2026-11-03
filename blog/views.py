@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404,redirect
+from django.shortcuts import render,get_object_or_404,redirect,get_list_or_404
 from .models import Post,Comment,Category
 from django.core.paginator import Paginator
 from web.forms import CommentForm
@@ -7,7 +7,8 @@ from django.contrib import messages
 
 def category_name_fun(arg):
         c = Category.objects.filter(name=arg).first()
-        return c.id
+        if c :
+         return c.id
 
 
 def blog_view(request,arg=None):
@@ -17,7 +18,7 @@ def blog_view(request,arg=None):
           category_status = 1
       else:
          if arg != None:
-            post=Post.objects.filter(status = 1).filter(category=category_name_fun(arg)).all()
+            post=get_list_or_404(Post.objects.filter(status = 1).filter(category=category_name_fun(arg)).all())
             category_status = 1
          else:
             post = Post.objects.filter(status = 1).all()
@@ -41,7 +42,10 @@ def blog_single(request,name):
       p.count_view +=1
       p.save()
       c = Comment.objects.filter(status = 1 ,post_id= p).all()
-      content =  {'post':p,'comment':c,'form':form}
+      content =  {'post':p,
+                  'comment':c,
+                  'form':form
+                  }
       
       return render(request,'blog-single.html',content)
       

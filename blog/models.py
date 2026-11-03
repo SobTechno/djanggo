@@ -1,7 +1,7 @@
 from django.db import models
 from app.models import User
 from django.urls import reverse
-
+from taggit.managers import TaggableManager
 
 class Category(models.Model):
     name = models.CharField(max_length=200)
@@ -31,6 +31,7 @@ class Post(models.Model):
          return self.content[:100]
     def get_absolute_url(self):
          return reverse('blog:single',kwargs={'name':self.slug})
+    tags = TaggableManager()
         
 
 class Comment(models.Model):
