@@ -50,10 +50,11 @@ def blog_single(request,name):
       return render(request,'blog-single.html',content)
       
    else:
-      username = request.POST.get('name')
-      email = request.POST.get('email')
-      text = request.POST.get('text')
-      if username and email and text and form.is_valid:
+      form = CommentForm(request.POST)
+      if form.is_valid:
+         username = request.POST.get('name')
+         email = request.POST.get('email')
+         text = request.POST.get('text')
          p =Post.objects.filter(status = 1 , slug = name).first()
          c = Comment(name = username,email = email,text=text ,post_id=p)
          c.save()

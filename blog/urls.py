@@ -1,10 +1,12 @@
 from django.contrib.sitemaps.views import sitemap
 from django.urls import path
 from blog.views import *
+from blog.feeds import LatestEntriesFeed
 app_name = 'blog'
 
 urlpatterns = [
     path('',blog_view,name='index'),
     path('/<str:name>',blog_single,name='single'),
     path('/category/<str:arg>',blog_view,name='index_category'),
+    path("/rss/feeds", LatestEntriesFeed()),
     ]

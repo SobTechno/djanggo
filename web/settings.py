@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
 ]
 SITE_ID = 1
-
+# captcha settings
+CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -62,7 +63,6 @@ MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 
 ]
-
 ROOT_URLCONF = 'web.urls'
 
 TEMPLATES = [
