@@ -8,7 +8,8 @@ def about_view(request):
     return render(request,'about.html')
 def home(request):
     p = Post.objects.filter(status = 1).all()
-    content = {'post':p}
+    user = request.user
+    content = {'post':p,'user':user}
     return render(request,'index.html',content)
 
 def test(request):

@@ -42,12 +42,13 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'django.contrib.sites',
     'django.contrib.sitemaps',
-    'app.apps.AppConfig',
     'robots',
     'taggit',
     'captcha',
     'django_summernote',
+    'app.apps.AppConfig',
     'blog.apps.BlogConfig',
+    'users.apps.UsersConfig',
 ]
 SITE_ID = 1
 # captcha settings
