@@ -4,7 +4,7 @@ from .forms import LoginForm
 from django.http import HttpResponse
 from django.contrib.auth.models import User 
 from django.contrib.auth import authenticate,login,logout
-
+from django.contrib.auth.decorators import login_required
 
 def register(request):
     return render(request,'auth/login')
@@ -20,17 +20,18 @@ def login_(request):
         if form.is_valid:
             username= request.POST['username']
             password= request.POST['password']
-            try:
-                user = User.objects.get(username=username,password=password)
-            except:
-                user = User.objects.create_user(username=username,password=password)
-                login(request,user) 
-            return redirect('user:dashboard')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('/accounts/dashboard')
+            else:
+                return redirect('/')
 
-
+@login_required
 def dashboard(request):
     return HttpResponse(request,'hooooy')
 
+@login_required
 def logout_(request):
     user = request
     if request.user.is_authenticated:

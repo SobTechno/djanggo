@@ -42,7 +42,7 @@
 			  					<li><a href="#">you are login</a></li>
 								<li><a href="/logout">logout</a></li>
 								{% else %}
-			  					<li><a href="/login">login</a></li>
+			  					<li><a href="{% url 'user:login' %}">login</a></li>
 								{% endif %}
 			  				</ul>			
 			  			</div>

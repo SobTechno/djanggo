@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('app.urls')),
     path('blog',include('blog.urls')),
-    path('',include('users.urls')),
+    path('accounts',include('users.urls')),
     path('summernote/', include('django_summernote.urls')),
     path('captcha/', include('captcha.urls')),
 ]+ debug_toolbar_urls()
