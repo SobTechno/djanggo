@@ -1,1 +1,1 @@
-from web.settings import *
+from web.setting import *
